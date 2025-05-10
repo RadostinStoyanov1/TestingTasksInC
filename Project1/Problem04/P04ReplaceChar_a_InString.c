@@ -6,17 +6,40 @@
 
 int findCountOf_a_Char(char *input);
 
-void removeAllChars_a(char input[]);
+void replaceAllChars_a(char input[]);
 
 int main() {
 
     char input[LENGTH];
     printf("\nEnter a string up to %d characters\n", LENGTH);
-    gets(input);
+    fgets(input, sizeof(input), stdin);
 
-    removeAllChars_a(input);
+    replaceAllChars_a(input);
     printf("%s\n", input);
     return 0;
+}
+
+void replaceAllChars_a(char input[]) {
+    int i, aCount, inputArrayLength, outputArrayLength, outputArrayIndexer = 0;
+    inputArrayLength = strlen(input);
+    aCount = findCountOf_a_Char(input);
+    outputArrayLength = inputArrayLength + (aCount * 3);
+
+    char *output = malloc((outputArrayLength + 1) * sizeof(char));
+
+    for (i = 0; i < inputArrayLength; i++) {
+        if (input[i] != 'a') {
+            output[outputArrayIndexer] = input[i];
+            outputArrayIndexer++;
+        } else {
+            strcat(output, "baba");
+            outputArrayIndexer += 4;
+        }        
+    }
+
+    output[outputArrayLength] = '\0';
+
+    strcpy(input, output);
 }
 
 int findCountOf_a_Char(char *input) {
@@ -29,24 +52,4 @@ int findCountOf_a_Char(char *input) {
     }
 
     return count;
-}
-
-void removeAllChars_a(char input[]) {
-    int i, aCount, inputArrayLength, outputArrayLength, outputArrayIndexer = 0;
-    inputArrayLength = strlen(input); //
-    aCount = findCountOf_a_Char(input);
-    outputArrayLength = inputArrayLength - aCount;
-
-    char *output = malloc((outputArrayLength + 1) * sizeof(char));
-
-    for (i = 0; i < inputArrayLength; i++) {
-        if (input[i] != 'a') {
-            output[outputArrayIndexer] = input[i];
-            outputArrayIndexer++;
-        }        
-    }
-
-    output[outputArrayLength] = '\0';
-
-    strcpy(input, output);
 }
