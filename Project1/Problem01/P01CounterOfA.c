@@ -6,12 +6,12 @@
 int findCountOf_a_Char(char *input) {
     int i, count = 0;
 
-    for (i = 0; i < LENGTH; i++) {
+    for (i = 0; i < strlen(input); i++) {
         if (input[i] == 'a') {
             count++;
         }
     }
-    
+
     return count;
 }
 
