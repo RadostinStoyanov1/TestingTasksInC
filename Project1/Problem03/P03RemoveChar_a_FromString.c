@@ -50,4 +50,5 @@ void removeAllChars_a(char input[]) {
     output[outputArrayLength] = '\0';
 
     strcpy(input, output);
+    free(output);
 }

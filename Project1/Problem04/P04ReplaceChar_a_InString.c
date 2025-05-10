@@ -43,6 +43,7 @@ void replaceAllChars_a(char input[]) {
     output[outputArrayLength] = '\0';
 
     strcpy(input, output);
+    free(output);
 }
 
 int findCountOf_a_Char(char *input) {
