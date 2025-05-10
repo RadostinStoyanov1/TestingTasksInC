@@ -12,6 +12,7 @@ int main() {
 
     char input[LENGTH];
     printf("\nEnter a string up to %d characters\n", LENGTH);
+    //fgets(input, sizeof(input), stdin); //fgets includes the '\n' symbol at the end of the read string
     gets(input);
 
     removeAllChars_a(input);

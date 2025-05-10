@@ -8,11 +8,14 @@ int findCountOf_a_Char(char *input);
 
 void replaceAllChars_a(char input[]);
 
+void setRangeOfCharsInString(char *baseString, int strartingIndex, char *addedString);
+
 int main() {
 
     char input[LENGTH];
     printf("\nEnter a string up to %d characters\n", LENGTH);
-    fgets(input, sizeof(input), stdin);
+    //fgets(input, sizeof(input), stdin); //fgets includes the '\n' symbol at the end of the read string
+    gets(input);
 
     replaceAllChars_a(input);
     printf("%s\n", input);
@@ -32,7 +35,7 @@ void replaceAllChars_a(char input[]) {
             output[outputArrayIndexer] = input[i];
             outputArrayIndexer++;
         } else {
-            strcat(output, "baba");
+            setRangeOfCharsInString(output, outputArrayIndexer, "baba");
             outputArrayIndexer += 4;
         }        
     }
@@ -52,4 +55,12 @@ int findCountOf_a_Char(char *input) {
     }
 
     return count;
+}
+
+void setRangeOfCharsInString(char *baseString, int strartingIndex, char *addedString) {
+    int lengthOfAddedString = strlen(addedString);
+
+    for (int i = 0; i < lengthOfAddedString; i++) {
+        baseString[strartingIndex + i] = addedString[i];
+    }
 }
