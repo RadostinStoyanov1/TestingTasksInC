@@ -41,8 +41,6 @@ int main() {
         return 1;
     }
 
-    printf("%d\n", neededDigits);
-
     outputArr[0] = '1';
     outputArr[1] = '\0';
 
