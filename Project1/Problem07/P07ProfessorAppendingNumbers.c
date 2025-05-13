@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 //Calculates the needed size of the string 
-int calculateNumberOfDigits(int number) {
+int calculateNumberOfSymbols(int number) {
     int output = 0;
 
     for (int i = 0; i < number; i++) {
@@ -14,7 +14,7 @@ int calculateNumberOfDigits(int number) {
 }
 
 void appendStep(char *inputArr, int step) {
-    int numbersFromPreviousStep = calculateNumberOfDigits(step - 1);
+    int numbersFromPreviousStep = calculateNumberOfSymbols(step - 1);
     int numbersForCurrentStep = (numbersFromPreviousStep * 2) + 1;
 
     inputArr[numbersFromPreviousStep] = (char) (step + '0'); //append digit of next step
@@ -33,7 +33,7 @@ int main() {
         return 1;
     }
 
-    neededDigits = calculateNumberOfDigits(number);
+    neededDigits = calculateNumberOfSymbols(number);
 
     char *outputArr = malloc(sizeof(char) * (neededDigits + 1)); //creating array for output including the string terminating character
     if (outputArr == NULL) {
